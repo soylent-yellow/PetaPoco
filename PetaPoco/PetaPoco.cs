@@ -1395,6 +1395,12 @@ namespace PetaPoco
 						{
 							foreach (var colname in columns)
 							{
+                // same as above, do not update the primary key!
+    						if (string.Compare(colname, primaryKeyName, true) == 0)
+								{
+									continue;
+								}
+                
 								var pc = pd.Columns[colname];
 
 								// Build the sql
